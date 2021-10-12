@@ -25,16 +25,16 @@ static int	get_number_len(int nb)
 	return (length);
 }
 
-static void	print_result(char *digits, int temp_len, int fd)
+static void	print_result(char *digits, int temp_len)
 {
 	int	counter;
 
 	counter = 0;
 	while (counter < temp_len)
-		ft_putchar_fd(digits[counter++], fd);
+		ft_putchar(digits[counter++]);
 }
 
-static void	make_job(int n, int fd)
+static void	make_job(int n)
 {
 	int		num_len;
 	int		temp_len;
@@ -47,25 +47,25 @@ static void	make_job(int n, int fd)
 		digits[--num_len] = (char)(n % 10 + '0');
 		n /= 10;
 	}
-	print_result(digits, temp_len, fd);
+	print_result(digits, temp_len);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr(int n)
 {
 	if (n == 0)
 	{
-		write(fd, "0", 1);
+		write(STDOUT_FILENO, "0", 1);
 		return ;
 	}
 	if (n == -2147483648)
 	{
-		write(fd, "-2147483648", 11);
+		write(STDOUT_FILENO, "-2147483648", 11);
 		return ;
 	}
 	if (n < 0)
 	{
-		write(fd, "-", 1);
+		write(STDOUT_FILENO, "-", 1);
 		n = n + (-2 * n);
 	}
-	make_job(n, fd);
+	make_job(n);
 }

@@ -1,6 +1,6 @@
 NAME = libft.a
 
-SOURCE = ft_atoi.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_putchar_fd.c
+SOURCE = ft_atoi.c ft_putendl.c ft_putnbr.c ft_putstr.c ft_putchar.c
 
 OBJ = $(patsubst %.c,%.o,$(SOURCE))
 
