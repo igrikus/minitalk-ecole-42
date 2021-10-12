@@ -3,7 +3,6 @@
 
 #include "../libft/libft.h"
 
-#include <stdio.h>
 #include <signal.h>
 
 #endif
