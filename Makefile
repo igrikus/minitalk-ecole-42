@@ -17,6 +17,8 @@ SERVER_OBJ = $(addprefix $(OBJ_DIR), $(SERVER_OBJ_FILE))
 
 HEADER = includes/minitalk.h
 
+LIBFT_DIR = libft
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -26,7 +28,8 @@ all: $(CLIENT) $(SERVER)
 
 #-------------CLIENT RULES-------------
 $(CLIENT): $(CLIENT_OBJ)
-	$(CC) -o $(CLIENT) $(CLIENT_OBJ)
+	@$(MAKE) -C $(LIBFT_DIR)
+	$(CC) -o $(CLIENT) $(CLIENT_OBJ) -L $(LIBFT_DIR) -lft
 
 $(CLIENT_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 	$(CC) $(CFLAGS) -c -I $(HEADER) -o $@ $<
@@ -34,7 +37,8 @@ $(CLIENT_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 
 #-------------SERVER RULES-------------
 $(SERVER): $(SERVER_OBJ)
-	$(CC) -o $(SERVER) $(SERVER_OBJ)
+	@$(MAKE) -C $(LIBFT_DIR)
+	$(CC) -o $(SERVER) $(SERVER_OBJ) -L $(LIBFT_DIR) -lft
 
 $(SERVER_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 	$(CC) $(CFLAGS) -c -I $(HEADER) -o $@ $<
@@ -42,6 +46,7 @@ $(SERVER_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 
 #-------------GENERAL RULES-------------
 clean:
+	@$(MAKE) clean -C $(LIBFT_DIR)
 ifeq ($(OS),Windows_NT)
 	@del $(subst /,\,$(CLIENT_OBJ))
 	@del $(subst /,\,$(SERVER_OBJ))
@@ -50,6 +55,7 @@ else
 endif
 
 fclean: clean
+	@$(MAKE) fclean -C libft
 ifeq ($(OS),Windows_NT)
 	@del $(CLIENT).exe $(SERVER).exe
 else
