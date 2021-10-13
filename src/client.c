@@ -2,8 +2,8 @@
 
 void	send_char(int pid, char character)
 {
-	int bit;
-	int bit_count;
+	int	bit;
+	int	bit_count;
 
 	bit_count = 0;
 	while (bit_count < 8)
