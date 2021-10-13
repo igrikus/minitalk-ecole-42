@@ -15,7 +15,7 @@ CLIENT_OBJ = $(addprefix $(OBJ_DIR), $(CLIENT_OBJ_FILE))
 SERVER_OBJ_FILE = $(patsubst %.c,%.o,$(SERVER_FILE))
 SERVER_OBJ = $(addprefix $(OBJ_DIR), $(SERVER_OBJ_FILE))
 
-HEADER = includes/minitalk.h
+HEADER = includes/
 
 LIBFT_DIR = libft
 
