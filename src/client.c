@@ -19,7 +19,7 @@ void	send_char(int pid, char character)
 			exit(1);
 		}
 		bit_count++;
-		usleep(100);
+		usleep(200);
 	}
 }
 

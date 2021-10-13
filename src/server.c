@@ -28,5 +28,5 @@ int	main(void)
 	signal(SIGUSR1, ft_get_char);
 	signal(SIGUSR2, ft_get_char);
 	while (42)
-		usleep(100);
+		usleep(200);
 }
